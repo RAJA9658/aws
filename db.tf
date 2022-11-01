@@ -3,9 +3,6 @@ resource "aws_db_subnet_group" "_" {
   subnet_ids = [aws_subnet.rajasubnet2.id , aws_subnet.rajasubnet.id ]
 }
   
-  
-  
-  
    resource "aws_db_instance" "mysql-db"  {
     identifier = "database-3"
     storage_type =  "gp2"
