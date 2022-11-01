@@ -1,6 +1,6 @@
 resource "aws_db_subnet_group" "_" {
   name       = "rds-sunetg"
-  subnet_ids = [aws_subnet.rajasubnet2.id , aws_subnet.rajasubnet.id ]
+  subnet_ids = [aws_subnet.mysubnet2.id , aws_subnet.mysubnet.id ]
 }
   
    resource "aws_db_instance" "mysql-db"  {
@@ -13,10 +13,10 @@ resource "aws_db_subnet_group" "_" {
     port = "3306"
     username = "admin"
     password = "rajat#9776"
-   // vpc_id = [aws_vpc.rajavpc.id]
+   
     db_subnet_group_name    = aws_db_subnet_group._.id
 
-    vpc_security_group_ids =  [aws_security_group.rajasg.id]
+    vpc_security_group_ids =  [aws_security_group.mysg.id]
     parameter_group_name = "default.mysql8.0"
     availability_zone = "ap-south-1a"
     publicly_accessible = true

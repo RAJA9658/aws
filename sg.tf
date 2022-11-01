@@ -1,8 +1,8 @@
 
-resource "aws_security_group" "rajasg" {
-  name        = "rajasg"
+resource "aws_security_group" "mysg" {
+  name        = "mysg"
   description = "Allow TLS inbound traffic"
-  vpc_id = aws_vpc.rajavpc.id
+  vpc_id = aws_vpc.myvpc.id
   
 
   ingress {
@@ -38,7 +38,7 @@ resource "aws_security_group" "rajasg" {
     
 
   tags = {
-    Name = "rajasg"
+    Name = "mysg"
   }
   }
 

@@ -1,9 +1,9 @@
  resource "aws_instance" "web" {
     ami = "ami-062df10d14676e201"
    instance_type = "t2.micro"
-   key_name = "raje"
-  vpc_security_group_ids = [aws_security_group.rajasg.id]
-  subnet_id  = aws_subnet.rajasubnet.id
+   key_name = aws_key_pair.deployer.id
+  vpc_security_group_ids = [aws_security_group.mysg.id]
+  subnet_id  = aws_subnet.mysubnet.id
 
 
   user_data = <<-EOF
