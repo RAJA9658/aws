@@ -1,4 +1,5 @@
  resource "aws_instance" "web" {
+     #count= 2
     ami = "ami-062df10d14676e201"
    instance_type = "t2.micro"
    key_name = aws_key_pair.deployer.id
@@ -19,9 +20,10 @@
   docker start somewordpress
   EOF
 
-
+ #user_data = file("script.sh") # directory path of userdata =/var/lib/cloud/instances/
 
    tags ={
+    #Name = "webapp -${count.index + 1}"
     Name = "web app"
    } 
 }
