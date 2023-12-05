@@ -1,0 +1,42 @@
+version: "3.7"
+
+services:
+  myjenkins:
+    image: raja9658/myjenkins:1
+    restart: always
+    container_name: jenkins
+    environment:
+    - DOCKER_TLS_VERIFY:1
+    ports:
+      - 8080:8080
+      - 50000:50000
+    volumes:
+      - jenkins-docker-certs:/certs/client:ro
+      - jenkins-data:/var/jenkins_home
+    networks:
+     - mysql
+
+  mysqldb:
+    image: mysql:5.7
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root@121022
+      MYSQL_DATABASE: imprint_db
+    ports:
+      - 3306:3306
+    volumes:
+      - $HOME/server/database/mysql_db:/var/lib/mysql
+      - $HOME/server/database/backup:/backup
+    networks:
+      - mysql
+
+volumes:
+   jenkins-docker-certs:
+   jenkins-data:
+
+
+networks:
+  mysql:
+    driver: bridge
+
